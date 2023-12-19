@@ -1,21 +1,25 @@
+import React from "react";
+import logo from "./icons_assets/Logo.svg";
+
 function Nav() {
   return (
-    <div>
-      <ul>
+    <div className="nav">
+      <img src={logo} alt="Logo" />
+      <ul className="nav_ul">
         <li>
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="/contact">About</a>
+          <a href="/about">About</a>
         </li>
         <li>
           <a href="/menu">Menu</a>
         </li>
         <li>
-          <a href="/contact">Order Online</a>
+          <a href="/order">Order Online</a>
         </li>
         <li>
-          <a href="/contact">Reservations</a>
+          <a href="/reservations">Reservations</a>
         </li>
       </ul>
     </div>
