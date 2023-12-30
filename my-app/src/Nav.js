@@ -15,7 +15,6 @@ function Nav() {
         </li>
         <li>
           <Link to="/Main">Menu</Link>{" "}
-          {/* Assuming "/menu" is the path to Main */}
         </li>
         <li>
           <Link to="/order">Order Online</Link>
