@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import logo from "./icons_assets/Logo.svg";
 
 function Nav() {
@@ -7,19 +8,20 @@ function Nav() {
       <img src={logo} alt="Logo" />
       <ul className="nav_ul">
         <li>
-          <a href="/">Home</a>
+          <Link to="/header">Home</Link>
         </li>
         <li>
-          <a href="/about">About</a>
+          <Link to="/about">About</Link>
         </li>
         <li>
-          <a href="/menu">Menu</a>
+          <Link to="/Main">Menu</Link>{" "}
+          {/* Assuming "/menu" is the path to Main */}
         </li>
         <li>
-          <a href="/order">Order Online</a>
+          <Link to="/order">Order Online</Link>
         </li>
         <li>
-          <a href="/reservations">Reservations</a>
+          <Link to="/reservations">Reservations</Link>
         </li>
       </ul>
     </div>
