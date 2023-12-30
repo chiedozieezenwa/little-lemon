@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 
 const BookingForm = () => {
+  const [formIsValid, setFormIsValid] = useState(false);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("17:00");
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
+
+  useEffect(() => {
+    const isFormValid = date && time && guests >= 1 && guests <= 10 && occasion;
+    setFormIsValid(isFormValid);
+  }, [date, time, guests, occasion]);
 
   const [availableTimes] = useState([
     "17:00",
@@ -35,6 +41,7 @@ const BookingForm = () => {
           id="res-date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
+          required
         />
 
         <label htmlFor="res-time">Choose time</label>
@@ -42,6 +49,7 @@ const BookingForm = () => {
           id="res-time"
           value={time}
           onChange={(e) => setTime(e.target.value)}
+          required
         >
           {availableTimes.map((t) => (
             <option key={t} value={t}>
@@ -59,6 +67,7 @@ const BookingForm = () => {
           id="guests"
           value={guests}
           onChange={(e) => setGuests(Number(e.target.value))}
+          required
         />
 
         <label htmlFor="occasion">Occasion</label>
@@ -66,12 +75,17 @@ const BookingForm = () => {
           id="occasion"
           value={occasion}
           onChange={(e) => setOccasion(e.target.value)}
+          required
         >
           <option value="Birthday">Birthday</option>
           <option value="Anniversary">Anniversary</option>
         </select>
 
-        <input type="submit" value="Make Your reservation" />
+        <input
+          type="submit"
+          value="Make Your reservation"
+          disabled={!formIsValid}
+        />
       </form>
     </div>
   );
