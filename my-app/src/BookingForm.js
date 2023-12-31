@@ -2,30 +2,21 @@ import React, { useState, useEffect } from "react";
 
 const BookingForm = () => {
   const [formIsValid, setFormIsValid] = useState(false);
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("17:00");
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState("17:00");
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
 
   useEffect(() => {
-    const isFormValid = date && time && guests >= 1 && guests <= 10 && occasion;
+    const isFormValid = selectedDate && selectedTime && guests >= 1 && guests <= 10 && occasion;
     setFormIsValid(isFormValid);
-  }, [date, time, guests, occasion]);
+  }, [selectedDate, selectedTime, guests, occasion]);
 
-  const [availableTimes] = useState([
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00",
-    "22:00",
-  ]);
+  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
 
-  // Event handler for form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic (e.g., API call)
-    console.log("Reservation submitted:", { date, time, guests, occasion });
+    console.log("Reservation submitted:", { selectedDate, selectedTime, guests, occasion });
   };
 
   return (
@@ -39,16 +30,16 @@ const BookingForm = () => {
         <input
           type="date"
           id="res-date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
+          value={selectedDate}
+          onChange={(e) => setSelectedDate(e.target.value)}
           required
         />
 
         <label htmlFor="res-time">Choose time</label>
         <select
           id="res-time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
+          value={selectedTime}
+          onChange={(e) => setSelectedTime(e.target.value)}
           required
         >
           {availableTimes.map((t) => (
@@ -92,3 +83,4 @@ const BookingForm = () => {
 };
 
 export default BookingForm;
+

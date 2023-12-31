@@ -14,7 +14,7 @@ function Nav() {
           <Link to="/about">About</Link>
         </li>
         <li>
-          <Link to="/Main">Menu</Link>{" "}
+          <Link to="/main">Menu</Link>
         </li>
         <li>
           <Link to="/order">Order Online</Link>
